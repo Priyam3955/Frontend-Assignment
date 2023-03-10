@@ -1,8 +1,9 @@
 import React from 'react'
+import './Header.css'
 
 const Header = () => {
   return (
-    <div>This is Convin Frontend Assignment</div>
+    <nav>This is Convin Frontend Assignment</nav>
   )
 }
 
