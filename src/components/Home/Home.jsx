@@ -77,13 +77,10 @@ const Home = () => {
     }
   };
   const moveCard = (index, newBucket) => {
-    const updatedCards = cards.map((card, i) => {
-      if (i === index) {
-        return { ...card, bucket: newBucket };
-      }
-      return card;
-    });
-    setCards(updatedCards);
+    const cardToMove = cards[index];
+    const updatedCard = { ...cardToMove, bucket: newBucket };
+    const remainingCards = cards.filter((_, i) => i !== index);
+    setCards([...remainingCards, updatedCard]);
   };
 
   const playCard = link => {
@@ -148,6 +145,7 @@ const Home = () => {
                   editCard={(newName, newLink) => editCard(index, newName, newLink)}
                   moveCard={newBucket => moveCard(index, newBucket)}
                   playCard={() => playCard(card.link)}
+                  buckets={buckets}
                 />
               );
             }
